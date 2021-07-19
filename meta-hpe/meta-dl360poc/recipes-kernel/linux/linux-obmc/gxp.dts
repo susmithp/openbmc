@@ -518,7 +518,7 @@
 
     csm: csm@80000000 {
       compatible = "hpe,gxp-csm", "simple-mfd", "syscon";
-      reg = <0x80000000 0x400>;
+      reg = <0x8000005c 0x2 0x800000de 0x1 0x800000e7 0x1>;
     };
 
     gpio: gpio@0 {
