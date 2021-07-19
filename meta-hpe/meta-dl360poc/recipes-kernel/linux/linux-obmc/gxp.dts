@@ -646,6 +646,13 @@
       udcg-handle = <&udcg>;
     };
 
+    post: post@800000a0 {
+	compatible = "hpe, gxp-dbg-post";
+	reg = <0x800000a0 0x20>;
+	interrupts = <10>;
+	interrupt-parent = <&vic1>;
+    };
+
     coretemp: coretemp@c0000130 {
       compatible = "hpe,gxp-coretemp";
       reg = <0xc0000130 0x8>;
