@@ -1,6 +1,6 @@
 KBRANCH ?= "post"
 LINUX_VERSION ?= "5.8.17"
-SRCREV="c6d7cb6ad8610b8e61bf469a6bf665acff478e33"
+SRCREV="8f3e3866f16ff1ce4ba330a39f9f55daf1470dda"
 
 require linux-obmc.inc
 require conf/machine/include/fitimage-sign.inc
