@@ -479,7 +479,7 @@
       "FAN7_FAIL", "FAN8_FAIL", "FAN9_FAIL", "FAN10_FAIL", "FAN11_FAIL", "FAN12_FAIL", "FAN13_FAIL", "FAN14_FAIL", "FAN15_FAIL", "FAN16_FAIL",
       "", "", "", "", "", "", "", "", "", "",
       "", "", "", "", "", "", "IDENTIFY", "HEALTH_RED", "HEALTH_AMBER", "POWER_BUTTON",
-      "", "SIO_POWER_GOOD", "NMI_BUTTON", "RESET_BUTTON", "SIO_S5", "SIO_ONCONTROL", "", "", "", "",
+      "", "", "NMI_BUTTON", "RESET_BUTTON", "SIO_S5", "SIO_ONCONTROL", "", "", "", "",
       "", "", "", "", "", "", "", "", "", "",
       "", "", "", "", "", "", "", "", "", "",
       "", "", "", "", "", "", "", "", "", "";
