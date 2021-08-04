@@ -12,10 +12,10 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-openembedded/meta-perl \
   ##OEROOT##/meta-openembedded/meta-python \
   ##OEROOT##/meta-openembedded/meta-webserver \
-  ##OEROOT##/meta-security \
   ##OEROOT##/meta-phosphor \
-  ##OEROOT##/meta-hpe/meta-gxp \
   ##OEROOT##/meta-hpe \
+  ##OEROOT##/meta-hpe/meta-common \
+  ##OEROOT##/meta-hpe/meta-gxp \
   ##OEROOT##/meta-hpe/meta-dl360poc \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
@@ -25,9 +25,9 @@ BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta-openembedded/meta-perl \
   ##OEROOT##/meta-openembedded/meta-python \
   ##OEROOT##/meta-openembedded/meta-webserver \
-  ##OEROOT##/meta-security \
   ##OEROOT##/meta-phosphor \
-  ##OEROOT##/meta-hpe/meta-gxp \
   ##OEROOT##/meta-hpe \
+  ##OEROOT##/meta-hpe/meta-common \
+  ##OEROOT##/meta-hpe/meta-gxp \
   ##OEROOT##/meta-hpe/meta-dl360poc \
   "

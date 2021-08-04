@@ -1,0 +1,27 @@
+From fa22abaaa357ba7c437a1560d317baf70b458513 Mon Sep 17 00:00:00 2001
+From: Jorge Cisneros <jorge.cisneros@hpe.com>
+Date: Tue, 22 Jun 2021 14:38:08 -0500
+Subject: [PATCH] Remove unused vars
+
+Signed-off-by: Jorge Cisneros <jorge.cisneros@hpe.com>
+---
+ ikvm_video.cpp | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/ikvm_video.cpp b/ikvm_video.cpp
+index 5a1afb2..63f0445 100644
+--- a/ikvm_video.cpp
++++ b/ikvm_video.cpp
+@@ -371,12 +371,6 @@ void Video::resize()
+ 
+ void Video::start()
+ {
+-    int rc;
+-    size_t oldHeight = height;
+-    size_t oldWidth = width;
+-    v4l2_capability cap;
+-    v4l2_format fmt;
+-    v4l2_streamparm sparm;
+ 
+     if (fd >= 0)
+     {
