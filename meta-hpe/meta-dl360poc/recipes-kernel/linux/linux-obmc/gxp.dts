@@ -647,7 +647,7 @@
     };
 
     post@800000a0 {
-	compatible = "hpe,gxp-dbg-post";
+	compatible = "hpe,gxp-dbg";
 	reg = <0x800000a0 0x20>;
 	interrupts = <10>;
 	interrupt-parent = <&vic1>;
