@@ -47,6 +47,7 @@ RDEPENDS_${PN}-system = " \
         gxp-fru-device \
         phosphor-image-signing \
 	phosphor-host-postd \
+	phosphor-post-code-manager \
         ethernet-mac-setting \
         host-boot-enable \
         phosphor-sel-logger \
