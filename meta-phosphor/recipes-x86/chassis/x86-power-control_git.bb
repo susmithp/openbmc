@@ -14,8 +14,15 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 inherit cmake systemd
 inherit obmc-phosphor-dbus-service
 
-SYSTEMD_SERVICE_${PN} += "xyz.openbmc_project.Chassis.Control.Power@.service \
-                         chassis-system-reset.service \
+def get_service(d):
+    if(d.getVar('OBMC_HOST_INSTANCES') == '0'):
+      return "xyz.openbmc_project.Chassis.Control.Power@0.service"
+    else:
+      return " ".join(["xyz.openbmc_project.Chassis.Control.Power@{}.service".format(x) for x in d.getVar('OBMC_HOST_INSTANCES').split()])
+
+SYSTEMD_SERVICE:${PN} = "${@get_service(d)}"
+
+SYSTEMD_SERVICE:${PN} += "chassis-system-reset.service \
                          chassis-system-reset.target"
 
 DEPENDS += " \
@@ -26,3 +33,4 @@ DEPENDS += " \
     sdbusplus \
     phosphor-logging \
   "
+FILES:${PN}  += "${systemd_system_unitdir}/xyz.openbmc_project.Chassis.Control.Power@.service"
