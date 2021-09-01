@@ -12,6 +12,8 @@
   };
 
   aliases {
+    ethernet0 = &umac0;
+    ethernet1 = &umac1;
   };
 
   memory@40000000 {
@@ -541,7 +543,7 @@
 
     csm: csm@80000000 {
       compatible = "hpe,gxp-csm", "simple-mfd", "syscon";
-      reg = <0x80000000 0x400>;
+      reg = <0x8000005c 0x2>, <0x800000de 0x1>, <0x800000e7 0x1>;
     };
 
     gpio: gpio@0 {
@@ -683,6 +685,13 @@
       vdevnum = <2>;
       fepnum = <4>;
       udcg-handle = <&udcg>;
+    };
+
+    post@800000a0 {
+        compatible = "hpe,gxp-dbg";
+        reg = <0x800000a0 0x20>;
+        interrupts = <10>;
+        interrupt-parent = <&vic1>;
     };
 
     coretemp: coretemp@c0000130 {
