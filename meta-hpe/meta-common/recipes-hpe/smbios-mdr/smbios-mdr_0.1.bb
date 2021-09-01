@@ -2,7 +2,7 @@ SUMMARY = "SMBIOS MDR version 2 service"
 DESCRIPTION = "SMBIOS MDR version 2 service"
 
 SRC_URI = "git://github.com/openbmc/smbios-mdr.git"
-SRCREV = "${AUTOREV}"
+SRCREV = "5b285892fe22bc5ed9ddf5a5f1322b58a55cfca8"
 
 S = "${WORKDIR}/git"
 
