@@ -7,7 +7,7 @@ PE = "1"
 
 # We use the revision in order to avoid having to fetch it from the
 # repo during parse
-SRCREV = "b139a8a9e6e89e4115741498d454847d99239eda"
+SRCREV = "6fad717622f81212e6c8505289ea26940fa35d7d"
 UBRANCH = "v2020.10-gxp-openbmc"
 SRC_URI = "git://github.com/HewlettPackard/gxp-uboot.git;branch=${UBRANCH}"
 
