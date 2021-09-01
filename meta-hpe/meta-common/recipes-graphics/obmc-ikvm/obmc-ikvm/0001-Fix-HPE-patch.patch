@@ -1,0 +1,45 @@
+From 60f770f0a18f0dd8cea077ba7255aec836f2c2c0 Mon Sep 17 00:00:00 2001
+From: Renee Rodgers <renee.rodgers@hpe.com>
+Date: Tue, 3 Aug 2021 08:39:01 -0500
+Subject: [PATCH] Fix HPE patch
+
+---
+ create_usbhid.sh | 6 ++++--
+ ikvm_input.hpp   | 2 +-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/create_usbhid.sh b/create_usbhid.sh
+index 4071d3a..7729c1b 100644
+--- a/create_usbhid.sh
++++ b/create_usbhid.sh
+@@ -117,13 +117,15 @@ create_hid() {
+ }
+ 
+ connect_hid() {
+-    if ! [[ `cat UDC` =~ "${dev_name}:p" ]]; then
++    if ! [[ `cat UDC` =~ "${dev_name}" ]]; then
++		echo "connect_hid" > /dev/console
+         echo "${dev_name}" > UDC
+     fi
+ }
+ 
+ disconnect_hid() {
+-    if [[ `cat UDC` =~ "${dev_name}:p" ]]; then
++    if [[ `cat UDC` =~ "${dev_name}" ]]; then
++		echo "disconnect_hid" > /dev/console
+         echo "" > UDC
+     fi
+ }
+diff --git a/ikvm_input.hpp b/ikvm_input.hpp
+index 558251d..93f0f6d 100644
+--- a/ikvm_input.hpp
++++ b/ikvm_input.hpp
+@@ -82,7 +82,7 @@ class Input
+         "/sys/kernel/config/usb_gadget/obmc_hid/UDC";
+     /* @brief Path to the USB virtual hub */
+     static constexpr const char* usbVirtualHubPath =
+-        "/sys/bus/platform/devices/1e6a0000.usb-vhub";
++        "/sys/bus/platform/devices/80401000.udc";
+     /* @brief Retry limit for writing an HID report */
+     static constexpr int HID_REPORT_RETRY_MAX = 5;
+     /*
