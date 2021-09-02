@@ -1,0 +1,59 @@
+From 55bfacfe3f34248e61f16c90c678002c6fd8babe Mon Sep 17 00:00:00 2001
+From: Renee Rodgers <renee.rodgers@hpe.com>
+Date: Mon, 30 Aug 2021 11:31:42 -0500
+Subject: [PATCH] Comment out connect and disconnect logic for HPE
+
+---
+ ikvm_input.cpp      | 4 ++++
+ start-ipkvm.service | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/ikvm_input.cpp b/ikvm_input.cpp
+index 480db3c..9a42f56 100644
+--- a/ikvm_input.cpp
++++ b/ikvm_input.cpp
+@@ -50,6 +50,7 @@ Input::~Input()
+ 
+ void Input::connect()
+ {
++#if 0
+     try
+     {
+         for (const auto& port : fs::directory_iterator(usbVirtualHubPath))
+@@ -75,6 +76,7 @@ void Input::connect()
+                         entry("ERROR=%s", e.what()));
+         return;
+     }
++#endif
+ 
+     if (!keyboardPath.empty())
+     {
+@@ -120,6 +122,7 @@ void Input::disconnect()
+         pointerFd = -1;
+     }
+ 
++#if 0
+     try
+     {
+         hidUdcStream << "" << std::endl;
+@@ -129,6 +132,7 @@ void Input::disconnect()
+         log<level::ERR>("Failed to disconnect HID gadget",
+                         entry("ERROR=%s", e.what()));
+     }
++#endif
+ }
+ 
+ void Input::keyEvent(rfbBool down, rfbKeySym key, rfbClientPtr cl)
+diff --git a/start-ipkvm.service b/start-ipkvm.service
+index 27a9572..5fa468c 100644
+--- a/start-ipkvm.service
++++ b/start-ipkvm.service
+@@ -4,7 +4,7 @@ ConditionPathIsMountPoint=/sys/kernel/config
+ 
+ [Service]
+ Restart=always
+-ExecStartPre=/usr/bin/create_usbhid.sh disconnect
++ExecStartPre=/usr/bin/create_usbhid.sh connect
+ ExecStart=/usr/bin/obmc-ikvm -v /dev/fb0 -k /dev/hidg0 -p /dev/hidg1
+ 
+ [Install]

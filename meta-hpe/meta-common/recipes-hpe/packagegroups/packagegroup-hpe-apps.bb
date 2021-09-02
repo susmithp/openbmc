@@ -47,15 +47,17 @@ RDEPENDS_${PN}-system = " \
 	entity-manager \
 	gxp-fru-device \
 	phosphor-image-signing \
-	ethernet-mac-setting \
 	host-ehci-owner-reset \
 	host-boot-enable \
 	phosphor-sel-logger \
 	uid-btn \
+	phosphor-host-postd \
+	phosphor-post-code-manager \
 	gxp-chif-service \
 	first-boot-set-hostname \
 	mctp \
 	pldm \
+	smbios-mdr \
 	biosconfig-manager \
 	virtualnic \
 	host-ehci-owner-reset \
