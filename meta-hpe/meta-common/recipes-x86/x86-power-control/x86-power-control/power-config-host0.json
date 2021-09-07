@@ -33,7 +33,8 @@
     {
         "Name" : "PowerOut",
         "LineName" : "POWER_OUT",
-        "Type" : "GPIO"
+        "Type" : "GPIO",
+	"Polarity" : "1"
     },
     {
         "Name" : "ResetButton",
@@ -43,7 +44,8 @@
     {
         "Name" : "ResetOut",
         "LineName" : "RESET_OUT",
-        "Type" : "GPIO"
+        "Type" : "GPIO",
+	"Polarity" : "1"
     },
     {
         "Name" : "SioOnControl",
