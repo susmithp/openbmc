@@ -34,7 +34,7 @@
         "Name" : "PowerOk",
         "LineName" : "PS_PWROK",
         "Type" : "GPIO",
-        "Polarity" : "ActiveHigh"
+        "Polarity" : "ActiveLow"
     },
     {
         "Name" : "PowerOut",
