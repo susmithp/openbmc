@@ -1,8 +1,8 @@
 SUMMARY = "Chassis Power Control service for Intel based platforms"
 DESCRIPTION = "Chassis Power Control service for Intel based platforms"
 
-SRC_URI = "git://github.com/vejmarie/x86-power-control.git;protocol=ssh;branch=polarity"
-SRCREV = "2049639ab58bb0cf47a67e47e10402ea7f436663"
+SRC_URI = "git://github.com/vejmarie/x86-power-control.git;protocol=ssh;branch=fix"
+SRCREV = "1d9afa7289d6eb0e265e70ca3763bd664b844f14"
 
 PV = "1.0+git${SRCPV}"
 
