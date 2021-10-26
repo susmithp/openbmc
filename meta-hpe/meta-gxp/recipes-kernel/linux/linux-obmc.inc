@@ -6,7 +6,7 @@ PROVIDES += "virtual/kernel"
 
 KCONFIG_MODE="--alldefconfig"
 
-KSRC ?= "git://github.com/vejmarie/gxp-linux.git;branch=${KBRANCH}"
+KSRC ?= "git://github.com/vejmarie/gxp-linux;branch=${KBRANCH}"
 SRC_URI = "${KSRC}"
 SRC_URI += " file://defconfig"
 
