@@ -681,16 +681,23 @@
       psu_phandle = <&psu1>, <&psu2>;
     };
 
-    peci: peci@80000400 {
-      compatible = "hpe,gxp-peci";
-      reg = <0x80000400 0x200>;
-      interrupts = <22>;
-      interrupt-parent = <&vic1>;
-    };
+    peci: bus@1e78b000 {
+        compatible = "simple-bus";
+        #address-cells = <1>;
+        #size-cells = <1>;
+        ranges = <0x0 0x1e78b000 0x60>;
 
-    peci-client@30 {
-        compatible = "intel,peci-client";
-        reg = <0x30>;
+        peci0: peci-bus@0 {
+           compatible = "hpe,gxp-peci";
+           reg = <0x80000400 0x200>;
+           interrupts = <22>;
+           interrupt-parent = <&vic1>;
+        };
+
+        peci-client@30 {
+            compatible = "intel,peci-client";
+            reg = <0x30>;
+        };
     };
   };
 
