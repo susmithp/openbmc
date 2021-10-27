@@ -686,46 +686,11 @@
       reg = <0x80000400 0x200>;
       interrupts = <22>;
       interrupt-parent = <&vic1>;
-      peci-client@30 {
-          compatible = "intel,peci-client";
-          reg = <0x30>;
-      };
+    };
 
-      peci-client@31 {
-          compatible = "intel,peci-client";
-          reg = <0x31>;
-      };
-
-      peci-client@32 {
-          compatible = "intel,peci-client";
-          reg = <0x32>;
-      };
-
-      peci-client@33 {
-          compatible = "intel,peci-client";
-          reg = <0x33>;
-      };
-
-      peci-client@34 {
-          compatible = "intel,peci-client";
-          reg = <0x34>;
-      };
-
-      peci-client@35 {
-          compatible = "intel,peci-client";
-          reg = <0x35>;
-      };
-
-      peci-client@36 {
-          compatible = "intel,peci-client";
-          reg = <0x36>;
-      };
-
-      peci-client@37 {
-          compatible = "intel,peci-client";
-          reg = <0x37>;
-      };
-
+    peci-client@30 {
+        compatible = "intel,peci-client";
+        reg = <0x30>;
     };
   };
 
