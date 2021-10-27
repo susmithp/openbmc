@@ -2,7 +2,7 @@ SUMMARY = "dbus-sensors"
 DESCRIPTION = "Dbus Sensor Services Configured from D-Bus"
 
 SRC_URI = "git://github.com/vejmarie/dbus-sensors.git;branch=peci"
-SRCREV = "f03f2640d9099d0b7e0e4043c565b85ed16ebebb"
+SRCREV = "b274703fde4a17d6f31b9178b9cfc72f14867626"
 
 PV = "0.1+git${SRCPV}"
 
@@ -37,9 +37,9 @@ PACKAGECONFIG[external] = "-Dexternal=enabled, -Dexternal=disabled"
 SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'adcsensor', \
                                                'xyz.openbmc_project.adcsensor.service', \
                                                '', d)}"
-# SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'cpusensor', \
-#                                               'xyz.openbmc_project.cpusensor.service', \
-#                                                '', d)}"
+SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'cpusensor', \
+                                               'xyz.openbmc_project.cpusensor.service', \
+                                               '', d)}"
 SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'exitairtempsensor', \
                                                'xyz.openbmc_project.exitairsensor.service', \
                                                '', d)}"
