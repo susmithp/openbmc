@@ -37,9 +37,9 @@ PACKAGECONFIG[external] = "-Dexternal=enabled, -Dexternal=disabled"
 SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'adcsensor', \
                                                'xyz.openbmc_project.adcsensor.service', \
                                                '', d)}"
-SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'cpusensor', \
-                                               'xyz.openbmc_project.cpusensor.service', \
-                                               '', d)}"
+# SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'cpusensor', \
+#                                               'xyz.openbmc_project.cpusensor.service', \
+#                                                '', d)}"
 SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'exitairtempsensor', \
                                                'xyz.openbmc_project.exitairsensor.service', \
                                                '', d)}"
