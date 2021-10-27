@@ -8,13 +8,6 @@
       "Type": "XeonCPU"
     },
     {
-      "Address": "0x31",
-      "Bus": 0,
-      "CpuID": 2,
-      "Name": "CPU 2",
-      "Type": "XeonCPU"
-    },
-    {
       "Name": "GXP Temp",
       "Thresholds": [
         {
