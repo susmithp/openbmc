@@ -686,15 +686,11 @@
       reg = <0x80000400 0x200>;
       interrupts = <22>;
       interrupt-parent = <&vic1>;
-      peci-client@30 {
+      peci-client@48 {
           compatible = "intel,peci-client";
-          reg = <0x30>;
+          reg = <0x48>;
       };
 
-      peci-client@31 {
-          compatible = "intel,peci-client";
-          reg = <0x31>;
-      };
     };
   };
 
