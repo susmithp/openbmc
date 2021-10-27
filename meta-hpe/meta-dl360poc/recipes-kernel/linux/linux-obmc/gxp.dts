@@ -681,16 +681,17 @@
       psu_phandle = <&psu1>, <&psu2>;
     };
 
-    peci0: peci@0x80000400 {
+    peci: peci@80000400 {
       compatible = "hpe,gxp-peci";
       reg = <0x80000400 0x200>;
       interrupts = <22>;
       interrupt-parent = <&vic1>;
-    };
+   
+      peci-client@30 {
+        compatible = "intel,peci-client";
+        reg = <0x30>;
+      };
 
-    peci-client0: peci-client@30 {
-      compatible = "intel,peci-client";
-      reg = <0x30>;
     };
   };
 
