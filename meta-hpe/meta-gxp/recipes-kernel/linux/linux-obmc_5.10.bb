@@ -1,6 +1,6 @@
 KBRANCH ?= "peci"
 LINUX_VERSION ?= "5.10.17"
-SRCREV="e18cb1ada37eed48aedcddda541315fe6d181789"
+SRCREV="d84e053d3abe85c779acc798c3fcb5012fdeaea7"
 
 require linux-obmc.inc
 require conf/machine/include/fitimage-sign.inc
