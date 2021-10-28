@@ -1,13 +1,6 @@
 {
   "Exposes": [
     {
-      "Address": "0x30",
-      "Bus": 0,
-      "CpuID": 1,
-      "Name": "CPU 1",
-      "Type": "XeonCPU"
-    },
-    {
       "Name": "GXP Temp",
       "Thresholds": [
         {
@@ -219,32 +212,6 @@
       "Class": "temp",
       "FFGainCoefficient": 0,
       "FFOffCoefficient": 0,
-      "ICoefficient": -4.64,
-      "ILimitMax": 100,
-      "ILimitMin": 30,
-      "Inputs": [
-        "DTS CPU1"
-      ],
-      "Name": "DTS CPU1",
-      "NegativeHysteresis": 5,
-      "OutLimitMax": 100,
-      "OutLimitMin": 30,
-      "Outputs": [],
-      "PCoefficient": -0.15,
-      "PositiveHysteresis": 0,
-      "SetPoint": -25,
-      "SetPointOffset": "WarningHigh",
-      "SlewNeg": -1,
-      "SlewPos": 0,
-      "Type": "Pid",
-      "Zones": [
-        "Zone 1"
-      ]
-    },
-    {
-      "Class": "temp",
-      "FFGainCoefficient": 0,
-      "FFOffCoefficient": 0,
       "ICoefficient": -0.2,
       "ILimitMax": 70,
       "ILimitMin": 10,
@@ -269,6 +236,14 @@
       "MinThermalOutput": 10,
       "Name": "Zone 1",
       "Type": "Pid.Zone"
+    },
+
+    {
+       "Address": "0x30",
+       "Bus": 0,
+       "CpuID": 1,
+       "Name": "CPU 1",
+       "Type": "XeonCPU"
     }
   ],
   "Name": "server",
