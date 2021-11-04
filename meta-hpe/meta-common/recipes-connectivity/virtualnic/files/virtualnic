@@ -41,8 +41,8 @@ start)
         mkdir configs/c.1/strings/0x409
         echo "Conf 1" > configs/c.1/strings/0x409/configuration
 
-        mkdir functions/ecm.usb0
-        ln -s functions/ecm.usb0 configs/c.1
+        mkdir functions/eem.usb0
+        ln -s functions/eem.usb0 configs/c.1
 
     fi
     cd /sys/kernel/config/usb_gadget/$gadget_name
