@@ -402,7 +402,7 @@
       #address-cells = <1>;
       #size-cells = <0>;
       ext_phy0: ethernt-phy@0 {
-        compatible = "marvell,88e1415","ethernet-phy-ieee802.3-c22";
+        compatible = "ethernet-phy-ieee802.3-c22";
         phy-mode = "sgmii";
         reg = <0>;
       };
