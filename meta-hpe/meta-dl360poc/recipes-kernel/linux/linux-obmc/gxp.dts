@@ -601,32 +601,34 @@
       };
     };
 
-    vuhc: vuhc {
-      compatible = "gpio-keys-polled";
-      poll-interval = <100>;
-
-      PortOwner@0 {
-        label = "Port Owner";
-        linux,code = <200>;
-        gpios = <&gpio 250 1>;
-      };
-
-      PortOwner@1 {
-        label = "Port Owner";
-        linux,code = <201>;
-        gpios = <&gpio 251 1>;
-      };
-
-      PortOwner@2 {
-        label = "Port Owner";
-        linux,code = <202>;
-        gpios = <&gpio 252 1>;
-      };
-    };
-
     vuhc0: vuhc@80400080 {
       compatible = "syscon";
       reg = <0x80400000 0x80>;
+      vuhc: vuhc {
+        compatible = "gpio-keys-polled";
+        poll-interval = <100>;
+        #address-cells = <1>;
+        #size-cells = <0>;
+        PortOwner@0 {
+                label = "Port Owner";
+                linux,code = <200>;
+                gpios = <&gpio 250 1>;
+                reg = <0>;
+              };
+
+         PortOwner@1 {
+                label = "Port Owner";
+                linux,code = <201>;
+                gpios = <&gpio 251 1>;
+                reg = <1>;
+        };
+        PortOwner@2 {
+                label = "Port Owner";
+                linux,code = <202>;
+                gpios = <&gpio 252 1>;
+                reg = <2>;
+        };
+      };
     };
 
     udcg: udcg@80400800 {
