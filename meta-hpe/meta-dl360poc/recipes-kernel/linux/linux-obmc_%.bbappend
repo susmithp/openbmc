@@ -1,5 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/linux-obmc:"
 SRC_URI += "file://gxp.dts \
+	    file://gxp.dtsi \
             "
 
 do_patch_append() {
