@@ -50,26 +50,5 @@ ahb {
       };
     };
 
-    vuhc {
-        compatible = "gpio-keys-polled";
-        poll-interval = <100>;
-        PortOwner0 {
-                label = "Port Owner";
-               linux,code = <200>;
-                gpios = <&gpio 250 1>;
-              };
-
-         PortOwner1 {
-                label = "Port Owner";
-                linux,code = <201>;
-                gpios = <&gpio 251 1>;
-        };
-        PortOwner2 {
-                label = "Port Owner";
-                linux,code = <202>;
-                gpios = <&gpio 252 1>;
-        };
-      };
-
   };
 };

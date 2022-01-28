@@ -517,7 +517,7 @@
 
     csm: csm@80000000 {
       compatible = "hpe,gxp-csm", "simple-mfd", "syscon";
-      reg = <0x80000000 0x400>;
+      reg = <0x8000005c 0x2>, <0x800000de 0x1>, <0x800000e7 0x1>;
     };
 
     gpio: gpio {
@@ -569,6 +569,27 @@
       };
     };
 
+    vuhc {
+        compatible = "gpio-keys-polled";
+        poll-interval = <100>;
+        PortOwner0 {
+                label = "Port Owner";
+               linux,code = <200>;
+                gpios = <&gpio 250 1>;
+              };
+
+         PortOwner1 {
+                label = "Port Owner";
+                linux,code = <201>;
+                gpios = <&gpio 251 1>;
+        };
+        PortOwner2 {
+                label = "Port Owner";
+                linux,code = <202>;
+                gpios = <&gpio 252 1>;
+        };
+      };
+
     vuhc0: vuhc@80400000 {
      compatible = "syscon";
       reg = <0x80400000 0x80>;
@@ -597,6 +618,23 @@
       vdevnum = <1>;
       fepnum = <7>;
       udcg-handle = <&udcg>;
+    };
+ 
+    udc2: udc@80403000 {
+      compatible = "hpe, gxp-udc";
+      reg = <0x80403000 0x1000>;
+      interrupts = <13>;
+      interrupt-parent = <&vic1>;
+      vdevnum = <2>;
+      fepnum = <4>;
+      udcg-handle = <&udcg>;
+    };
+
+    post@800000a0 {
+        compatible = "hpe,gxp-dbg";
+        reg = <0x800000a0 0x20>;
+        interrupts = <10>;
+        interrupt-parent = <&vic1>;
     };
 
     coretemp: coretemp@c0000130 {
@@ -641,4 +679,5 @@
       clock-frequency = <800000000>;
     };
   };
+
 };
