@@ -94,7 +94,7 @@ ahb {
         compatible = "hpe,gxp-psu";
         reg = <0x59>;
       };
-    }
+    };
 
     vuhc: vuhc {
         compatible = "gpio-keys-polled";
