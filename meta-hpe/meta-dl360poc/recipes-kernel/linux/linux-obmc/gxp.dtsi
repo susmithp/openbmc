@@ -294,16 +294,6 @@
       i2cg-handle = <&i2cg>;
       #address-cells = <1>;
       #size-cells = <0>;
-
-      psu1: psu@58 {
-        compatible = "hpe,gxp-psu";
-        reg = <0x58>;
-      };
-
-      psu2: psu@59 {
-        compatible = "hpe,gxp-psu";
-        reg = <0x59>;
-      };
     };
 
     i2c8: i2c@c0002800 {
@@ -589,7 +579,6 @@
 
     syspower: syspower {
       compatible = "hpe,gxp-power";
-      psu_phandle = <&psu1>, <&psu2>;
     };
 
     peci: peci@80000400 {

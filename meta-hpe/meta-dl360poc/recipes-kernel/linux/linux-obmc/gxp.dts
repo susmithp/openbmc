@@ -80,6 +80,22 @@ ahb {
       udcg-handle = <&udcg>;
     };
 
+    syspower: syspower {
+      psu_phandle = <&psu1>, <&psu2>;
+    };
+
+    i2c7: i2c@c0002700 {
+      psu1: psu@58 {
+        compatible = "hpe,gxp-psu";
+        reg = <0x58>;
+      };
+
+      psu2: psu@59 {
+        compatible = "hpe,gxp-psu";
+        reg = <0x59>;
+      };
+    }
+
     vuhc: vuhc {
         compatible = "gpio-keys-polled";
         poll-interval = <100>;
