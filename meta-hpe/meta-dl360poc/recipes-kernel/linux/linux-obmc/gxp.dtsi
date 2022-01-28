@@ -5,10 +5,6 @@
   compatible = "HPE,GXP";
   model = "GXP";
 
-  chosen {
-    bootargs = "earlyprintk console=ttyS0,115200 user_debug=31";
-  };
-
   aliases {
   };
 
@@ -569,7 +565,7 @@
       };
     };
 
-    vuhc {
+    vuhc : vuhc {
         compatible = "gpio-keys-polled";
         poll-interval = <100>;
         PortOwner0 {
