@@ -20,25 +20,7 @@
     reg = <0x40000000 0x20000000>;
   };
 
-    xreg: xreg@d1000300 {
-      compatible = "hpe,gxp-xreg", "simple-mfd", "syscon";
-      reg = <0xd1000300 0xFF>;
-      interrupts = <26>;
-      interrupt-parent = <&vic0>;
-      #gpio-cells = <2>;
-      gpio-line-names =
-      "", "", "", "", "", "", "POWER", "HEARTBEAT", "FAN1_INST", "FAN2_INST",
-      "FAN3_INST", "FAN4_INST", "FAN5_INST", "FAN6_INST", "FAN7_INST", "FAN8_INST", "FAN9_INST", "FAN10_INST", "FAN11_INST", "FAN12_INST",
-      "FAN13_INST", "FAN14_INST", "FAN15_INST", "FAN16_INST", "FAN1_FAIL", "FAN2_FAIL", "FAN3_FAIL", "FAN4_FAIL", "FAN5_FAIL", "FAN6_FAIL",
-      "FAN7_FAIL", "FAN8_FAIL", "FAN9_FAIL", "FAN10_FAIL", "FAN11_FAIL", "FAN12_FAIL", "FAN13_FAIL", "FAN14_FAIL", "FAN15_FAIL", "FAN16_FAIL",
-      "", "", "", "", "", "", "", "", "", "",
-      "", "", "", "", "", "", "IDENTIFY", "HEALTH_RED", "HEALTH_AMBER", "POWER_BUTTON",
-      "", "SIO_POWER_GOOD", "NMI_BUTTON", "RESET_BUTTON", "SIO_S5", "SIO_ONCONTROL", "", "", "", "",
-      "", "", "", "", "", "", "", "", "", "",
-      "", "", "", "", "", "", "", "", "", "",
-      "", "", "", "", "", "", "", "", "", "";
-    };
-
+ahb {
     leds: leds {
       compatible = "gpio-leds";
 
@@ -68,7 +50,7 @@
       };
     };
 
-     vuhc {
+    vuhc {
         compatible = "gpio-keys-polled";
         poll-interval = <100>;
         PortOwner0 {
@@ -90,3 +72,4 @@
       };
 
   };
+};
