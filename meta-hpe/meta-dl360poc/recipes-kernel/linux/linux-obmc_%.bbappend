@@ -8,6 +8,8 @@ do_patch_append() {
       if [ -r "${WORKDIR}/${DT}.dts" ]; then
           cp ${WORKDIR}/${DT}.dts \
               ${STAGING_KERNEL_DIR}/arch/${ARCH}/boot/dts
+	  cp ${WORKDIR}/${DT}.dtsi \
+              ${STAGING_KERNEL_DIR}/arch/${ARCH}/boot/dts
       fi
   done
  

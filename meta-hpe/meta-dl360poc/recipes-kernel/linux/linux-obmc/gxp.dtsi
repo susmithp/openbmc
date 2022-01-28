@@ -10,8 +10,6 @@
   };
 
   aliases {
-    ethernet0 = &umac0;
-    ethernet1 = &umac1;
   };
 
   memory@40000000 {
@@ -19,14 +17,16 @@
     reg = <0x40000000 0x20000000>;
   };
 
-  ahb@80000000 {
+  ahb {
     compatible = "simple-bus";
     #address-cells = <1>;
     #size-cells = <1>;
+    device_type = "soc";
     ranges;
 
     vic0: vic@ceff0000 {
       compatible = "arm,pl192-vic";
+      #address-cells = <1>;
       interrupt-controller;
       reg = <0xceff0000 0x1000>;
       #interrupt-cells = <1>;
@@ -34,6 +34,7 @@
 
     vic1: vic@80f00000 {
       compatible = "arm,pl192-vic";
+      #address-cells = <1>;
       interrupt-controller;
       reg = <0x80f00000 0x1000>;
       #interrupt-cells = <1>;
@@ -127,10 +128,6 @@
           #address-cells = <1>;
           #size-cells = <1>;
 
-          bmc@0 {
-            label = "bmc";
-            reg = <0x0 0x2000000>;
-          };
           u-boot@0 {
             label = "u-boot";
             reg = <0x0 0x60000>;
@@ -169,19 +166,20 @@
             label = "host-prime";
             reg = <0x0 0x02000000>;
           };
-          host-second@0 {
+          host-second@2000000 {
             label = "host-second";
             reg = <0x02000000 0x02000000>;
           };
         };
       };
     };
-
     sram@d0000000 {
       compatible = "mtd-ram";
       reg = <0xd0000000 0x80000>;
       bank-width = <1>;
       erase-size =<1>;
+      #address-cells = <1>;
+      #size-cells = <1>;
       partition@0 {
         label = "host-reserved";
         reg = <0x0 0x10000>;
@@ -247,15 +245,10 @@
       #address-cells = <1>;
       #size-cells = <0>;
 
-      24c32@54 {
-        compatible = "atmel,24c32";
+      24c02@50 {
+        compatible = "atmel,24c02";
         pagesize = <8>;
-        reg = <0x54>;
-      };
-      24c32@55 {
-        compatible = "atmel,24c32";
-        pagesize = <8>;
-        reg = <0x55>;
+        reg = <0x50>;
       };
     };
 
@@ -337,10 +330,10 @@
       #size-cells = <0>;
     };
 
-    i2cmux@4 {
+    i2cmux@d1000074 {
       compatible = "i2c-mux-reg";
       i2c-parent = <&i2c4>;
-      reg = <0xd1000374 1>;
+      reg = <0xd1000074 1>;
       #address-cells = <1>;
       #size-cells = <0>;
 
@@ -363,10 +356,10 @@
       };
     };
 
-    i2cmux@6 {
+    i2cmux@d1000076 {
       compatible = "i2c-mux-reg";
       i2c-parent = <&i2c6>;
-      reg = <0xd1000376 1>;
+      reg = <0xd1000076 1>;
       #address-cells = <1>;
       #size-cells = <0>;
 
@@ -400,7 +393,6 @@
         #size-cells = <0>;
       };
     };
-
     mdio0: mdio@c0004080 {
       compatible = "hpe,gxp-umac-mdio";
       reg = <0xc0004080 0x10>;
@@ -455,7 +447,7 @@
       reg = <0x80fc0430 0x100>;
     };
 
-    kcs_reg: kcs_reg@080fd0400 {
+    kcs_reg: kcs_reg@80fd0400 {
       compatible = "hpe,gxp-kcs-bmc";
       reg = <0x80fd0400 0x8>;
       interrupts = <6>;
@@ -471,25 +463,6 @@
       bits-per-pixel = <32>;
       width = <800>;
       height = <600>;
-    };
-
-    xreg: xreg@d1000300 {
-      compatible = "hpe,gxp-xreg", "simple-mfd", "syscon";
-      reg = <0xd1000300 0xFF>;
-      interrupts = <26>;
-      interrupt-parent = <&vic0>;
-      #gpio-cells = <2>;
-      gpio-line-names =
-      "", "", "", "", "", "", "POWER", "HEARTBEAT", "FAN1_INST", "FAN2_INST",
-      "FAN3_INST", "FAN4_INST", "FAN5_INST", "FAN6_INST", "FAN7_INST", "FAN8_INST", "FAN9_INST", "FAN10_INST", "FAN11_INST", "FAN12_INST",
-      "FAN13_INST", "FAN14_INST", "FAN15_INST", "FAN16_INST", "FAN1_FAIL", "FAN2_FAIL", "FAN3_FAIL", "FAN4_FAIL", "FAN5_FAIL", "FAN6_FAIL",
-      "FAN7_FAIL", "FAN8_FAIL", "FAN9_FAIL", "FAN10_FAIL", "FAN11_FAIL", "FAN12_FAIL", "FAN13_FAIL", "FAN14_FAIL", "FAN15_FAIL", "FAN16_FAIL",
-      "", "", "", "", "", "", "", "", "", "",
-      "", "", "", "", "", "", "IDENTIFY", "HEALTH_RED", "HEALTH_AMBER", "POWER_BUTTON",
-      "", "SIO_POWER_GOOD", "NMI_BUTTON", "RESET_BUTTON", "SIO_S5", "SIO_ONCONTROL", "", "", "", "",
-      "", "", "", "", "", "", "", "", "", "",
-      "", "", "", "", "", "", "", "", "", "",
-      "", "", "", "", "", "", "", "", "", "";
     };
 
     fanctrl: fanctrl@c1000c00 {
@@ -525,15 +498,15 @@
 
     csm: csm@80000000 {
       compatible = "hpe,gxp-csm", "simple-mfd", "syscon";
-      reg = <0x8000005c 0x2>, <0x800000de 0x1>, <0x800000e7 0x1>;
+      reg = <0x80000000 0x400>;
     };
 
-    gpio: gpio@0 {
+    gpio: gpio {
       compatible = "hpe,gxp-gpio";
       #gpio-cells = <2>;
       csm_handle = <&csm>;
       vuhc0_handle = <&vuhc0>;
-      gpio-line-names =
+     gpio-line-names =
       "", "", "", "", "", "", "", "", "", "",
       "", "", "", "", "", "", "", "", "", "",
       "", "", "", "", "", "", "", "", "", "",
@@ -566,35 +539,6 @@
       "", "", "", "", "", "", "", "", "", "";
     };
 
-    leds: leds {
-      compatible = "gpio-leds";
-
-      power {
-        gpios = <&xreg 6 0>;
-        default-state = "off";
-      };
-
-      heartbeat {
-        gpios = <&xreg 7 0>;
-        default-state = "off";
-      };
-
-      identify {
-        gpios = <&xreg 56 0>;
-        default-state = "off";
-      };
-
-      health_red {
-        gpios = <&xreg 57 0>;
-        default-state = "off";
-      };
-
-      health_amber {
-        gpios = <&xreg 58 0>;
-        default-state = "off";
-      };
-    };
-
     xreg_kyes: xreg_keys {
       compatible = "gpio-keys-polled";
       poll-interval = <100>;
@@ -606,31 +550,8 @@
       };
     };
 
-    vuhc: vuhc {
-      compatible = "gpio-keys-polled";
-      poll-interval = <100>;
-
-      PortOwner@0 {
-        label = "Port Owner";
-        linux,code = <200>;
-        gpios = <&gpio 250 1>;
-      };
-
-      PortOwner@1 {
-        label = "Port Owner";
-        linux,code = <201>;
-        gpios = <&gpio 251 1>;
-      };
-
-      PortOwner@2 {
-        label = "Port Owner";
-        linux,code = <202>;
-        gpios = <&gpio 252 1>;
-      };
-    };
-
-    vuhc0: vuhc@80400080 {
-      compatible = "syscon";
+    vuhc0: vuhc@80400000 {
+     compatible = "syscon";
       reg = <0x80400000 0x80>;
     };
 
@@ -645,7 +566,7 @@
       interrupts = <13>;
       interrupt-parent = <&vic1>;
       vdevnum = <0>;
-      fepnum = <4>;
+      fepnum = <7>;
       udcg-handle = <&udcg>;
     };
 
@@ -655,25 +576,8 @@
       interrupts = <13>;
       interrupt-parent = <&vic1>;
       vdevnum = <1>;
-      fepnum = <4>;
+      fepnum = <7>;
       udcg-handle = <&udcg>;
-    };
-
-    udc2: udc@80403000 {
-      compatible = "hpe, gxp-udc";
-      reg = <0x80403000 0x1000>;
-      interrupts = <13>;
-      interrupt-parent = <&vic1>;
-      vdevnum = <2>;
-      fepnum = <4>;
-      udcg-handle = <&udcg>;
-    };
-
-    post@800000a0 {
-        compatible = "hpe,gxp-dbg";
-        reg = <0x800000a0 0x20>;
-        interrupts = <10>;
-        interrupt-parent = <&vic1>;
     };
 
     coretemp: coretemp@c0000130 {
@@ -685,7 +589,14 @@
       compatible = "hpe,gxp-power";
       psu_phandle = <&psu1>, <&psu2>;
     };
-  };
+
+    peci: peci@80000400 {
+      compatible = "hpe,gxp-peci";
+      reg = <0x80000400 0x200>;
+      interrupts = <22>;
+      interrupt-parent = <&vic1>;
+    };
+};
 
   clocks {
     osc: osc {
@@ -711,5 +622,4 @@
       clock-frequency = <800000000>;
     };
   };
-
 };
