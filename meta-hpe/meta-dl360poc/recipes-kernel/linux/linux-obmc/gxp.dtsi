@@ -565,7 +565,7 @@
       };
     };
 
-    vuhc : vuhc {
+    vuhc: vuhc {
         compatible = "gpio-keys-polled";
         poll-interval = <100>;
         PortOwner0 {
