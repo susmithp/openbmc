@@ -50,6 +50,36 @@ ahb {
       };
     };
 
+    udc0: udc@80401000 {
+      compatible = "hpe, gxp-udc";
+      reg = <0x80401000 0x1000>;
+      interrupts = <13>;
+      interrupt-parent = <&vic1>;
+      vdevnum = <0>;
+      fepnum = <7>;
+      udcg-handle = <&udcg>;
+    };
+
+    udc1: udc@80402000 {
+      compatible = "hpe, gxp-udc";
+      reg = <0x80402000 0x1000>;
+      interrupts = <13>;
+      interrupt-parent = <&vic1>;
+      vdevnum = <1>;
+      fepnum = <7>;
+      udcg-handle = <&udcg>;
+    };
+
+    udc2: udc@80403000 {
+      compatible = "hpe, gxp-udc";
+      reg = <0x80403000 0x1000>;
+      interrupts = <13>;
+      interrupt-parent = <&vic1>;
+      vdevnum = <2>;
+      fepnum = <4>;
+      udcg-handle = <&udcg>;
+    };
+
     vuhc: vuhc {
         compatible = "gpio-keys-polled";
         poll-interval = <100>;
@@ -69,6 +99,6 @@ ahb {
                 linux,code = <202>;
                 gpios = <&gpio 252 1>;
         };
-      };
+     };
   };
 };
