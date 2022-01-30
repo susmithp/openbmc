@@ -477,16 +477,9 @@
       #gpio-cells = <2>;
     };
 
-    csm: csm@80000000 {
+    csm: csm@8000005c {
       compatible = "hpe,gxp-csm", "simple-mfd", "syscon";
       reg = <0x8000005c 0x2>, <0x800000de 0x1>, <0x800000e7 0x1>;
-    };
-
-    gpio: gpio {
-      compatible = "hpe,gxp-gpio";
-      #gpio-cells = <2>;
-      csm_handle = <&csm>;
-      vuhc0_handle = <&vuhc0>;
     };
 
     vuhc0: vuhc@80400000 {
@@ -510,11 +503,18 @@
       compatible = "hpe,gxp-coretemp";
       reg = <0xc0000130 0x8>;
     };
-
-    syspower: syspower {
-      compatible = "hpe,gxp-power";
-    };
 };
+
+   gpio: gpio {
+      compatible = "hpe,gxp-gpio";
+      #gpio-cells = <2>;
+      csm_handle = <&csm>;
+      vuhc0_handle = <&vuhc0>;
+   };
+
+  syspower: syspower {
+      compatible = "hpe,gxp-power";
+  };
 
   clocks {
     osc: osc {

@@ -21,35 +21,6 @@
   };
 
 ahb {
-    leds: leds {
-      compatible = "gpio-leds";
-
-      power {
-        gpios = <&xreg 6 0>;
-        default-state = "off";
-      };
-
-      heartbeat {
-        gpios = <&xreg 7 0>;
-        default-state = "off";
-      };
-
-      identify {
-        gpios = <&xreg 56 0>;
-        default-state = "off";
-      };
-
-      health_red {
-        gpios = <&xreg 57 0>;
-        default-state = "off";
-      };
-
-      health_amber {
-        gpios = <&xreg 58 0>;
-        default-state = "off";
-      };
-    };
-
     umac0: umac@c0004000 {
      mac-address = [94 18 82 16 04 d8];
     };
@@ -117,6 +88,40 @@ ahb {
       "", "", "", "", "", "", "", "", "", "";
     };
 
+    i2c7: i2c@c0002700 {
+      psu1: psu@58 {
+        compatible = "hpe,gxp-psu";
+        reg = <0x58>;
+      };
+
+      psu2: psu@59 {
+        compatible = "hpe,gxp-psu";
+        reg = <0x59>;
+      };
+    };
+  };
+
+    vuhc: vuhc {
+        compatible = "gpio-keys-polled";
+        poll-interval = <100>;
+        PortOwner0 {
+                label = "Port Owner";
+               linux,code = <200>;
+                gpios = <&gpio 250 1>;
+              };
+
+         PortOwner1 {
+                label = "Port Owner";
+                linux,code = <201>;
+                gpios = <&gpio 251 1>;
+        };
+        PortOwner2 {
+                label = "Port Owner";
+                linux,code = <202>;
+                gpios = <&gpio 252 1>;
+        };
+     };
+
     gpio: gpio {
      gpio-line-names =
       "", "", "", "", "", "", "", "", "", "",
@@ -151,6 +156,10 @@ ahb {
       "", "", "", "", "", "", "", "", "", "";
     };
 
+    syspower: syspower {
+      psu_phandle = <&psu1>, <&psu2>;
+    };
+
     xreg_keys: xreg_keys {
       compatible = "gpio-keys-polled";
       poll-interval = <100>;
@@ -162,41 +171,33 @@ ahb {
       };
     };
 
-    syspower: syspower {
-      psu_phandle = <&psu1>, <&psu2>;
-    };
+    leds: leds {
+      compatible = "gpio-leds";
 
-    i2c7: i2c@c0002700 {
-      psu1: psu@58 {
-        compatible = "hpe,gxp-psu";
-        reg = <0x58>;
+      power {
+        gpios = <&xreg 6 0>;
+        default-state = "off";
       };
 
-      psu2: psu@59 {
-        compatible = "hpe,gxp-psu";
-        reg = <0x59>;
+      heartbeat {
+        gpios = <&xreg 7 0>;
+        default-state = "off";
+      };
+
+      identify {
+        gpios = <&xreg 56 0>;
+        default-state = "off";
+      };
+
+      health_red {
+        gpios = <&xreg 57 0>;
+        default-state = "off";
+      };
+
+      health_amber {
+        gpios = <&xreg 58 0>;
+        default-state = "off";
       };
     };
 
-    vuhc: vuhc {
-        compatible = "gpio-keys-polled";
-        poll-interval = <100>;
-        PortOwner0 {
-                label = "Port Owner";
-               linux,code = <200>;
-                gpios = <&gpio 250 1>;
-              };
-
-         PortOwner1 {
-                label = "Port Owner";
-                linux,code = <201>;
-                gpios = <&gpio 251 1>;
-        };
-        PortOwner2 {
-                label = "Port Owner";
-                linux,code = <202>;
-                gpios = <&gpio 252 1>;
-        };
-     };
-  };
 };
