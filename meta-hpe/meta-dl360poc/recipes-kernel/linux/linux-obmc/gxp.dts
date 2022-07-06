@@ -122,15 +122,13 @@
         compatible = "jedec,spi-nor";
         reg = <0>;
       };
-
       flash@1 {
         compatible = "jedec,spi-nor";
         reg = <1>;
       };
     };
 
-    &spifi {
-      status = "okay";
+    spifi {
       flash@0 {
         compatible = "jedec,spi-nor";
         reg = <0>;
