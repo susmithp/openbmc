@@ -121,17 +121,6 @@
       flash@0 {
         compatible = "jedec,spi-nor";
         reg = <0>;
-      };
-      flash@1 {
-        compatible = "jedec,spi-nor";
-        reg = <1>;
-      };
-    };
-
-    spifi {
-      flash@0 {
-        compatible = "jedec,spi-nor";
-        reg = <0>;
         partitions {
           compatible = "fixed-partitions";
           #address-cells = <1>;
