@@ -111,7 +111,7 @@
       interrupt-parent = <&vic0>;
     };
 
-    spifi0: spifi@c0000200 {
+    spifi: spifi@c0000200 {
       compatible = "hpe,gxp-spifi";
       reg = <0xc0000200 0x80>, <0xc000c000 0x100>, <0xf8000000 0x8000000>;
       interrupts = <20>;
