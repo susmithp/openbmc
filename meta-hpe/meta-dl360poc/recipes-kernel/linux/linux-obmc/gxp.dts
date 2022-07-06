@@ -118,7 +118,19 @@
       interrupt-parent = <&vic0>;
       #address-cells = <1>;
       #size-cells = <0>;
+      flash@0 {
+        compatible = "jedec,spi-nor";
+        reg = <0>;
+      };
 
+      flash@1 {
+        compatible = "jedec,spi-nor";
+        reg = <1>;
+      };
+    };
+
+    &spifi {
+      status = "okay";
       flash@0 {
         compatible = "jedec,spi-nor";
         reg = <0>;
